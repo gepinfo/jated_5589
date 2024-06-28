@@ -170,6 +170,7 @@ services:
       - securitymanager
       - systemcredentialmanager
       - systementry
+      - test
 
     networks:
       - jated_5589_net
@@ -250,7 +251,28 @@ services:
     image: systementry-5589
     container_name: systementry-5589
     ports: 
-      - 8010:8010
+      - 8011:8011
+    env_file: .env
+    depends_on:
+      - mongo
+    networks:
+      - jated_5589_net
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: 0.0.0.0:24224
+        fluentd-async-connect: "true"
+        tag: fluent
+    mem_limit: 300m
+    mem_reservation: 150m
+    cpus: 0.2
+
+  test: 
+    build: ../../../application/services/custom_services/test
+    image: test-5589
+    container_name: test-5589
+    ports: 
+      - 8012:8012
     env_file: .env
     depends_on:
       - mongo

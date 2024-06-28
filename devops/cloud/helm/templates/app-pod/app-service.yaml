@@ -24,5 +24,9 @@ spec:
     port: {{ .Values.service.systementry.port }}
     targetPort: {{ .Values.service.systementry.targetPort }}
 
+  - name: {{ .Values.service.test.name }}
+    port: {{ .Values.service.test.port }}
+    targetPort: {{ .Values.service.test.targetPort }}
+
   selector:
     name: {{ .Values.app.prefix }}-app

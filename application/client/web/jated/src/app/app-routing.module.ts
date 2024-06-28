@@ -32,6 +32,7 @@ const routes: Routes = [
        { path: '', component: TemplateComponent, pathMatch: 'full'   } ,
 { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
 
+{ path : 'jare', loadChildren: () => import('./jare/jare.module').then(m => m.JareModule), canActivate: [AuthGuard] } , 
 ];
 
 @NgModule({
