@@ -1,0 +1,7 @@
+{
+  "name": "jated",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
